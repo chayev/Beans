@@ -18,12 +18,13 @@
         <div class="container">
             <h2>Ready to Meet Beans?</h2>
             <p>Reach out to discuss fostering or adopting this amazing dog.</p>
-            <form action="https://formspree.io/f/{{ .Site.Params.formspree_id }}" method="POST" class="contact-form">
+            <form id="contact-form" action="https://formspree.io/f/{{ .Site.Params.formspree_id }}" method="POST" class="contact-form">
                 <!-- Using the formspree_id from hugo.toml -->
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="_replyto" placeholder="Your Email" required>
                 <textarea name="message" placeholder="Tell us a bit about yourself and your home..." required></textarea>
-                <button type="submit" class="btn primary-btn">Send Message</button>
+                <button type="submit" id="submit-btn" class="btn primary-btn">Send Message</button>
+                <div id="form-status" class="form-status"></div>
             </form>
             <div class="footer-bottom">
                 <p>&copy; {{ now.Year }} {{ .Site.Title }}. All rights reserved.</p>

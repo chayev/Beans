@@ -443,6 +443,20 @@ a:hover {
     min-height: 120px;
 }
 
+.form-status {
+    margin-top: 1rem;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.form-status.success {
+    color: #4CAF50; /* Green that works on dark bg */
+}
+
+.form-status.error {
+    color: #FF5252; /* Soft red for error */
+}
+
 .footer-bottom {
     margin-top: 4rem;
     padding-top: 2rem;
