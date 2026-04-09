@@ -1,0 +1,10 @@
+baseURL = 'https://chayev.github.io/Beans/'
+languageCode = 'en-us'
+title = 'Adopt Beans - Your New Best Friend'
+theme = 'beans-theme'
+
+[params]
+  description = "Adoptable Dog Pima County - Meet Beans PACC #A861707, a 5-year-old Boxer-Pit mix who is sweet, goofy, and a professional cuddler."
+
+[markup.goldmark.renderer]
+  unsafe = true
