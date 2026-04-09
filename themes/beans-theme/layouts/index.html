@@ -1,66 +1,55 @@
 {{ define "main" }}
 <header class="hero">
     <div class="hero-content">
-        <h1 class="hero-title">Meet Beans: Your New Best Friend and Professional Cuddler</h1>
-        <p class="hero-subtitle">A sweet, goofy 5-year-old Boxer-Pit mix looking for his forever home.</p>
-        <a href="#adopt" class="btn primary-btn pulse-anim">Adopt Beans</a>
+        <h1 class="hero-title">{{ .Site.Params.hero.title }}</h1>
+        <p class="hero-subtitle">{{ .Site.Params.hero.subtitle }}</p>
+        <a href="#adopt" class="btn primary-btn pulse-anim">{{ .Site.Params.hero.cta_text }}</a>
     </div>
     <div class="hero-image">
-        <!-- Using IMG_4532.jpg as it is the largest and likely best quality -->
-        <img src="{{ "images/IMG_4532.jpg" | relURL }}" alt="Beans looking happy">
+        <img src="{{ .Site.Params.hero.image | relURL }}" alt="Beans looking happy">
     </div>
 </header>
 
 <section class="about section-light">
     <div class="container split-layout">
         <div class="text-content">
-            <h2 class="section-title">About Beans</h2>
-            <p>Beans is a resilient survivor who blossomed after leaving the shelter environment. He's a 5-year-old, 55lb Boxer-Pit mix with a heart of gold. Known as an "A++ cuddler", Beans is incredibly sweet, endlessly curious, and wonderfully goofy.</p>
-            <p>He's looking for a family who understands the patience needed for a shelter dog to settle in, but the love he gives in return is immeasurable.</p>
+            <h2 class="section-title">{{ .Site.Params.about.title }}</h2>
+            {{ range .Site.Params.about.content }}
+            <p>{{ . }}</p>
+            {{ end }}
         </div>
         <div class="image-content border-radius-lg">
-            <img src="{{ "images/IMG_3775.jpg" | relURL }}" alt="Beans relaxing">
+            <img src="{{ .Site.Params.about.image | relURL }}" alt="Beans relaxing">
         </div>
     </div>
 </section>
 
 <section class="skills-checklist section-dark">
     <div class="container">
-        <h2 class="section-title text-center">The "Good Boy" Checklist</h2>
+        <h2 class="section-title text-center">{{ .Site.Params.checklist.title }}</h2>
         <div class="grid-3">
+            {{ range .Site.Params.checklist.items }}
             <div class="card card-hover">
-                <div class="card-icon">🏠</div>
-                <h3>House & Crate Trained</h3>
-                <p>Fully house-trained and comfortable in his crate when needed.</p>
+                <div class="card-icon">{{ .icon }}</div>
+                <h3>{{ .title }}</h3>
+                <p>{{ .text }}</p>
             </div>
-            <div class="card card-hover">
-                <div class="card-icon">🧠</div>
-                <h3>Smart & Obedient</h3>
-                <p>Knows "Sit", "Paw", "Down", and has a great "Wait".</p>
-            </div>
-            <div class="card card-hover">
-                <div class="card-icon">🚗</div>
-                <h3>Adventure Ready</h3>
-                <p>Excellent on car rides and a gentleman on leash walks.</p>
-            </div>
+            {{ end }}
         </div>
     </div>
 </section>
 
 <section class="favorites section-light">
     <div class="container text-center">
-        <h2 class="section-title">Beans' Favorite Things</h2>
+        <h2 class="section-title">{{ .Site.Params.favorites.title }}</h2>
         <div class="pill-container">
-            <span class="pill">Green Beans 🥕</span>
-            <span class="pill">Hose Water 💦</span>
-            <span class="pill">Belly Rubs 🥰</span>
-            <span class="pill">Ice Cubes 🧊</span>
-            <span class="pill">Couch Naps 🛋️</span>
+            {{ range .Site.Params.favorites.items }}
+            <span class="pill">{{ . }}</span>
+            {{ end }}
         </div>
         <div class="media-highlight margin-top-lg">
-            <!-- Embedding video -->
-            <video controls width="100%" class="border-radius-lg shadow-md" poster="{{ "images/IMG_3922.jpeg" | relURL }}">
-                <source src="{{ "videos/compressed/hose-compressed.mp4" | relURL }}" type="video/mp4">
+            <video controls width="100%" class="border-radius-lg shadow-md" poster="{{ .Site.Params.favorites.video_poster | relURL }}">
+                <source src="{{ .Site.Params.favorites.video_src | relURL }}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -70,14 +59,14 @@
 <section class="ideal-home section-accent split-layout-alt">
     <div class="container split-layout align-center">
         <div class="image-content rounded-circle shadow-lg">
-            <img src="{{ "images/IMG_4178.jpg" | relURL }}" alt="Beans being goofy">
+            <img src="{{ .Site.Params.ideal_home.image | relURL }}" alt="Beans being goofy">
         </div>
         <div class="text-content">
-            <h2 class="section-title">Ideal Home Profile</h2>
+            <h2 class="section-title">{{ .Site.Params.ideal_home.title }}</h2>
             <ul class="check-list">
-                <li><strong>Only Pet:</strong> Beans thrives when he is the center of your universe.</li>
-                <li><strong>Yard or Routine:</strong> Prefers a home with a yard or a consistent daily walking routine.</li>
-                <li><strong>Patient Family:</strong> A loving family that understands a shelter dog needs time and patience to settle down.</li>
+                {{ range .Site.Params.ideal_home.points }}
+                <li><strong>{{ .label }}:</strong> {{ .text }}</li>
+                {{ end }}
             </ul>
         </div>
     </div>
@@ -85,17 +74,14 @@
 
 <section class="gallery section-light">
     <div class="container">
-         <h2 class="section-title text-center">Media Gallery</h2>
+         <h2 class="section-title text-center">{{ .Site.Params.gallery.title }}</h2>
          <p class="text-center margin-bottom-lg">
-            <a href="https://heyzine.com/flip-book/577d2b53f4.html" target="_blank" rel="noopener noreferrer" class="btn secondary-btn">📖 View Beans' Flipbook</a>
+            <a href="{{ .Site.Params.gallery.flipbook_url }}" target="_blank" rel="noopener noreferrer" class="btn secondary-btn">📖 View Beans' Flipbook</a>
          </p>
          <div class="masonry-grid">
-            <img src="{{ "images/IMG_4337.jpg" | relURL }}" alt="Gallery Image 1" class="gallery-img">
-            <img src="{{ "images/IMG_4461.jpg" | relURL }}" alt="Gallery Image 2" class="gallery-img">
-            <img src="{{ "images/IMG_4540.jpg" | relURL }}" alt="Gallery Image 3" class="gallery-img">
-            <img src="{{ "images/IMG_4553.jpg" | relURL }}" alt="Gallery Image 4" class="gallery-img">
-            <img src="{{ "images/IMG_5023.jpg" | relURL }}" alt="Gallery Image 5" class="gallery-img">
-            <img src="{{ "images/IMG_4197.jpg" | relURL }}" alt="Gallery Image 6" class="gallery-img">
+            {{ range .Site.Params.gallery.images }}
+            <img src="{{ . | relURL }}" alt="Gallery Image" class="gallery-img">
+            {{ end }}
          </div>
     </div>
 </section>

@@ -5,6 +5,67 @@ theme = 'beans-theme'
 
 [params]
   description = "Adoptable Dog Pima County - Meet Beans PACC #A861707, a 5-year-old Boxer-Pit mix who is sweet, goofy, and a professional cuddler."
+  formspree_id = "xbjnlyyw"
+
+  [params.hero]
+    title = "Meet Beans: Your New Best Friend and Professional Cuddler"
+    subtitle = "A sweet, goofy 5-year-old Boxer-Pit mix looking for his forever home."
+    cta_text = "Adopt Beans"
+    image = "images/IMG_4532.jpg"
+
+  [params.about]
+    title = "About Beans"
+    content = [
+      "Beans is a resilient survivor who blossomed after leaving the shelter environment. He's a 5-year-old, 55lb Boxer-Pit mix with a heart of gold. Known as an 'A++ cuddler', Beans is incredibly sweet, endlessly curious, and wonderfully goofy.",
+      "He's looking for a family who understands the patience needed for a shelter dog to settle in, but the love he gives in return is immeasurable."
+    ]
+    image = "images/IMG_3775.jpg"
+
+  [params.checklist]
+    title = "The 'Good Boy' Checklist"
+    [[params.checklist.items]]
+      icon = "🏠"
+      title = "House & Crate Trained"
+      text = "Fully house-trained and comfortable in his crate when needed."
+    [[params.checklist.items]]
+      icon = "🧠"
+      title = "Smart & Obedient"
+      text = "Knows 'Sit', 'Paw', 'Down', and has a great 'Wait'."
+    [[params.checklist.items]]
+      icon = "🚗"
+      title = "Adventure Ready"
+      text = "Excellent on car rides and a gentleman on leash walks."
+
+  [params.favorites]
+    title = "Beans' Favorite Things"
+    items = ["Green Beans 🥕", "Hose Water 💦", "Belly Rubs 🥰", "Ice Cubes 🧊", "Couch Naps 🛋️"]
+    video_src = "videos/compressed/hose-compressed.mp4"
+    video_poster = "images/IMG_3922.jpeg"
+
+  [params.ideal_home]
+    title = "Ideal Home Profile"
+    image = "images/IMG_4178.jpg"
+    [[params.ideal_home.points]]
+      label = "Only Pet"
+      text = "Beans thrives when he is the center of your universe."
+    [[params.ideal_home.points]]
+      label = "Yard or Routine"
+      text = "Prefers a home with a yard or a consistent daily walking routine."
+    [[params.ideal_home.points]]
+      label = "Patient Family"
+      text = "A loving family that understands a shelter dog needs time and patience to settle down."
+
+  [params.gallery]
+    title = "Media Gallery"
+    flipbook_url = "https://heyzine.com/flip-book/577d2b53f4.html"
+    images = [
+      "images/IMG_4337.jpg",
+      "images/IMG_4461.jpg",
+      "images/IMG_4540.jpg",
+      "images/IMG_4553.jpg",
+      "images/IMG_5023.jpg",
+      "images/IMG_4197.jpg"
+    ]
 
 [markup.goldmark.renderer]
   unsafe = true
