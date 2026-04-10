@@ -26,7 +26,7 @@ theme = 'beans-theme'
     [[params.checklist.items]]
       icon = "🏠"
       title = "House & Crate Trained"
-      text = "Fully house-trained and comfortable in his crate when needed."
+      text = "Fully house-trained and thrives in his crate."
     [[params.checklist.items]]
       icon = "🧠"
       title = "Smart & Obedient"
