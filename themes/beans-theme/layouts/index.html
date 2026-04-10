@@ -80,7 +80,7 @@
          </p>
          <div class="masonry-grid">
             {{ range .Site.Params.gallery.images }}
-            <img src="{{ . | relURL }}" alt="Gallery Image" class="gallery-img">
+            <img src="{{ . | relURL }}" alt="Gallery Image" class="gallery-img" loading="lazy">
             {{ end }}
          </div>
     </div>
