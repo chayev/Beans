@@ -1,7 +1,10 @@
 baseURL = 'https://chayev.github.io/Beans/'
 languageCode = 'en-us'
-title = 'Adopt Beans - Your New Best Friend'
+title = 'Adopt Beans'
 theme = 'beans-theme'
+
+[minify]
+  minifyOutput = true
 
 [params]
   description = "Adoptable Dog Pima County - Meet Beans PACC #A861707, a 5-year-old Boxer-Pit mix who is sweet, goofy, and a professional cuddler."
@@ -30,7 +33,7 @@ theme = 'beans-theme'
     [[params.checklist.items]]
       icon = "🧠"
       title = "Smart & Obedient"
-      text = "Knows 'Sit', 'Paw', 'Down', and has a great 'Wait'."
+      text = "Knows ‘Sit’, ‘Paw’, ‘Down’, and has a great ‘Wait’. Very treat motivated and ready to learn more!"
     [[params.checklist.items]]
       icon = "🚗"
       title = "Adventure Ready"
@@ -39,6 +42,7 @@ theme = 'beans-theme'
   [params.favorites]
     title = "Beans' Favorite Things"
     items = ["Green Beans 🥕", "Hose Water 💦", "Belly Rubs 🥰", "Ice Cubes 🧊", "Couch Naps 🛋️"]
+    blurb = "Whether it's cooling off with some hose water or snacking on his favorite veggies, Beans knows how to enjoy the simple things in life! 🥕💦"
     video_src = "videos/compressed/hose-compressed.mp4"
     video_poster = "images/IMG_3922.jpeg"
 
@@ -59,11 +63,8 @@ theme = 'beans-theme'
     title = "Media Gallery"
     flipbook_url = "https://heyzine.com/flip-book/577d2b53f4.html"
     images = [
-      "images/IMG_3775.jpg",
       "images/IMG_3782.jpg",
-      "images/IMG_3922.jpeg",
       "images/IMG_3925.jpeg",
-      "images/IMG_4178.jpg",
       "images/IMG_4197.jpg",
       "images/IMG_4333.jpg",
       "images/IMG_4337.jpg",
@@ -72,7 +73,6 @@ theme = 'beans-theme'
       "images/IMG_4540.jpg",
       "images/IMG_4553.jpg",
       "images/IMG_4652.jpg",
-      "images/IMG_4712.jpg",
       "images/IMG_4769.jpeg",
       "images/IMG_4770.jpeg",
       "images/IMG_4913.jpeg",

@@ -1,0 +1,15 @@
+{{ define "main" }}
+<section class="list-page section-light">
+    <div class="container margin-top-lg margin-bottom-lg">
+        <h1 class="section-title">{{ .Title }}</h1>
+        <div class="list-container">
+            {{ range .Pages }}
+            <article class="card card-hover margin-bottom-md">
+                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                {{ .Summary }}
+            </article>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

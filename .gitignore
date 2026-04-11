@@ -4,3 +4,7 @@ public/
 *.docx
 *.pdf
 themes/beans-theme/resources/
+# Raw video files (not for deployment)
+raw_videos/
+static/images/_originals/
+raw_images_backup/

@@ -12,6 +12,48 @@
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
 </head>
 <body>
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <span class="logo-emoji">🐾</span> {{ .Site.Title }}
+            </a>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#checklist">Checklist</a></li>
+                    <li><a href="#favorites">Favorites</a></li>
+                    <li><a href="#ideal-home">Ideal Home</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#adopt" class="btn primary-btn nav-cta">Adopt Beans</a>
+                <button class="menu-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu-overlay"></div>
+    <nav class="mobile-drawer">
+        <div class="drawer-header">
+            <button class="close-menu">&times;</button>
+        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#checklist">Checklist</a></li>
+            <li><a href="#favorites">Favorites</a></li>
+            <li><a href="#ideal-home">Ideal Home</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><hr></li>
+            <li><a href="#adopt" class="btn primary-btn mobile-cta">Adopt Beans</a></li>
+        </ul>
+    </nav>
+
     {{ block "main" . }}{{ end }}
     
     <footer id="adopt" class="site-footer">

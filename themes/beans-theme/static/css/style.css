@@ -29,6 +29,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Aligned with sticky header height */
 }
 
 body {
@@ -37,6 +38,169 @@ body {
     line-height: 1.6;
     background-color: var(--color-bg-light);
     overflow-x: hidden;
+}
+
+/* Header & Navigation */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 248, 240, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(210, 105, 30, 0.1);
+    transition: all var(--transition-fast);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-family: var(--font-secondary);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-bg-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-emoji {
+    font-size: 1.8rem;
+}
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.desktop-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.desktop-nav a {
+    color: var(--color-text-dark);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color var(--transition-fast);
+}
+
+.desktop-nav a:hover {
+    color: var(--color-primary);
+}
+
+.nav-cta {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Mobile Toggle & Drawer */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-primary);
+    border-radius: 3px;
+    transition: all var(--transition-fast);
+}
+
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 320px;
+    height: 100vh;
+    background-color: var(--color-bg-light);
+    z-index: 1200;
+    padding: 2rem;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    transition: right var(--transition-medium);
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-drawer.active {
+    right: 0;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+}
+
+.close-menu {
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+.mobile-drawer ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.mobile-drawer a {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+.mobile-cta {
+    width: 100%;
+    text-align: center;
+}
+
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    z-index: 1150;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-fast);
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 h1, h2, h3, h4 {
@@ -121,13 +285,13 @@ a:hover {
 /* Sections */
 .section-light {
     background-color: var(--color-bg-light);
-    padding: 5rem 0;
+    padding: 4rem 0;
 }
 
 .section-dark {
     background-color: var(--color-bg-dark);
     color: var(--color-text-light);
-    padding: 5rem 0;
+    padding: 4rem 0;
 }
 
 .section-dark h2, .section-dark h3 {
@@ -137,7 +301,7 @@ a:hover {
 .section-accent {
     background-color: var(--color-accent);
     color: var(--color-text-dark);
-    padding: 5rem 0;
+    padding: 4rem 0;
 }
 
 .section-title {
@@ -316,6 +480,26 @@ a:hover {
     gap: 1rem;
 }
 
+.favorites-pills {
+    justify-content: flex-start;
+}
+
+.favorites-blurb {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--color-primary-dark);
+    margin-bottom: 2rem;
+    line-height: 1.4;
+}
+
+.favorites-video {
+    max-height: 600px; /* Reduced from natural ~750px to better fit viewport */
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
 .pill {
     background-color: white;
     color: var(--color-primary-dark);
@@ -357,44 +541,98 @@ a:hover {
     font-size: 1.2rem;
 }
 
-/* Gallery Masonry */
+/* Gallery Masonry - CSS Columns for naturally uncropped packing */
 .masonry-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    grid-auto-rows: 250px;
-    gap: 1.5rem;
-    grid-auto-flow: dense;
+    columns: 3 300px;
+    column-gap: 1.5rem;
+    width: 100%;
 }
 
 .gallery-img {
+    display: inline-block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    margin-bottom: 1.5rem;
     border-radius: var(--border-radius-sm);
     transition: transform var(--transition-medium), box-shadow var(--transition-medium);
-    cursor: pointer;
+    cursor: zoom-in; /* Indicate it can be expanded */
+    break-inside: avoid;
+    height: auto;
+    object-fit: contain;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Add a varied masonry look on larger screens */
-@media (min-width: 600px) {
-    .gallery-img:nth-child(5n + 1) { grid-row: span 2; }
-    .gallery-img:nth-child(8n + 4) { grid-column: span 2; grid-row: span 2; }
-    .gallery-img:nth-child(6n + 3) { grid-row: span 2; }
+.gallery-img:hover {
+    transform: scale(1.02) translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    z-index: 2;
+    position: relative;
+}
+
+/* Lightbox Modal Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: opacity var(--transition-medium);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    transform: scale(0.95);
+    transition: transform var(--transition-medium);
+}
+
+.lightbox.active .lightbox-content {
+    transform: scale(1);
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    color: white;
+    font-size: 3rem;
+    font-weight: 300;
+    cursor: pointer;
+    line-height: 1;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    transition: background var(--transition-fast);
+}
+
+.close-lightbox:hover {
+    background: rgba(255,255,255,0.2);
 }
 
 /* Ensure no elements overflow columns on strictly single-column mobile view */
 @media (max-width: 599px) {
-    .gallery-img {
-        grid-row: span 1 !important;
-        grid-column: span 1 !important;
+    .masonry-grid {
+        columns: 1;
     }
-}
-
-.gallery-img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    z-index: 2;
-    position: relative;
 }
 
 /* Footer & Form */
@@ -478,7 +716,7 @@ a:hover {
 }
 
 /* Media Queries */
-@media (min-width: 900px) {
+@media (min-width: 1100px) {
     .hero {
         flex-direction: row;
         justify-content: space-between;
@@ -489,7 +727,19 @@ a:hover {
         padding-top: 0;
     }
     .masonry-grid {
-        grid-template-columns: repeat(3, 1fr);
+        columns: 3 300px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .desktop-nav {
+        display: none;
+    }
+    .menu-toggle {
+        display: flex;
+    }
+    .header-container {
+        height: 70px;
     }
 }
 
@@ -497,4 +747,24 @@ a:hover {
     .hero-title { font-size: 2.5rem; }
     .section-title { font-size: 2rem; }
     .split-layout { gap: 2rem; }
+    .header-container { padding: 0 1.5rem; }
+}
+
+@media (max-width: 599px) {
+    .masonry-grid {
+        columns: 1;
+    }
+}
+
+@media (max-width: 450px) {
+    .nav-cta {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    .header-actions {
+        gap: 0.8rem;
+    }
+    .logo {
+        font-size: 1.25rem;
+    }
 }
