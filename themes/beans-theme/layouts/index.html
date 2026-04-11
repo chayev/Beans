@@ -1,16 +1,16 @@
 {{ define "main" }}
-<header class="hero">
+<header id="home" class="hero">
     <div class="hero-content">
         <h1 class="hero-title">{{ .Site.Params.hero.title }}</h1>
         <p class="hero-subtitle">{{ .Site.Params.hero.subtitle }}</p>
         <a href="#adopt" class="btn primary-btn pulse-anim">{{ .Site.Params.hero.cta_text }}</a>
     </div>
     <div class="hero-image">
-        <img src="{{ .Site.Params.hero.image | relURL }}" alt="Beans looking happy">
+        <img src="{{ .Site.Params.hero.image | relURL }}" alt="Beans looking happy" decoding="async">
     </div>
 </header>
 
-<section class="about section-light">
+<section id="about" class="about section-light">
     <div class="container split-layout">
         <div class="text-content">
             <h2 class="section-title">{{ .Site.Params.about.title }}</h2>
@@ -19,12 +19,12 @@
             {{ end }}
         </div>
         <div class="image-content border-radius-lg">
-            <img src="{{ .Site.Params.about.image | relURL }}" alt="Beans relaxing">
+            <img src="{{ .Site.Params.about.image | relURL }}" alt="Beans relaxing" loading="lazy" decoding="async">
         </div>
     </div>
 </section>
 
-<section class="skills-checklist section-dark">
+<section id="checklist" class="skills-checklist section-dark">
     <div class="container">
         <h2 class="section-title text-center">{{ .Site.Params.checklist.title }}</h2>
         <div class="grid-3">
@@ -39,27 +39,32 @@
     </div>
 </section>
 
-<section class="favorites section-light">
-    <div class="container text-center">
-        <h2 class="section-title">{{ .Site.Params.favorites.title }}</h2>
-        <div class="pill-container">
-            {{ range .Site.Params.favorites.items }}
-            <span class="pill">{{ . }}</span>
-            {{ end }}
-        </div>
-        <div class="media-highlight margin-top-lg">
-            <video controls width="100%" class="border-radius-lg shadow-md" poster="{{ .Site.Params.favorites.video_poster | relURL }}">
-                <source src="{{ .Site.Params.favorites.video_src | relURL }}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+<section id="favorites" class="favorites section-light">
+    <div class="container">
+        <h2 class="section-title text-center">{{ .Site.Params.favorites.title }}</h2>
+        <div class="split-layout align-center margin-top-lg">
+            <div class="media-highlight">
+                <video controls width="100%" class="border-radius-lg shadow-md favorites-video" poster="{{ .Site.Params.favorites.video_poster | relURL }}" preload="none">
+                    <source src="{{ .Site.Params.favorites.video_src | relURL }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="text-content">
+                <p class="favorites-blurb">{{ .Site.Params.favorites.blurb }}</p>
+                <div class="pill-container favorites-pills">
+                    {{ range .Site.Params.favorites.items }}
+                    <span class="pill">{{ . }}</span>
+                    {{ end }}
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<section class="ideal-home section-accent split-layout-alt">
+<section id="ideal-home" class="ideal-home section-accent split-layout-alt">
     <div class="container split-layout align-center">
-        <div class="image-content rounded-circle shadow-lg">
-            <img src="{{ .Site.Params.ideal_home.image | relURL }}" alt="Beans being goofy">
+        <div class="image-content border-radius-lg">
+            <img src="{{ .Site.Params.ideal_home.image | relURL }}" alt="Beans being goofy" loading="lazy" decoding="async">
         </div>
         <div class="text-content">
             <h2 class="section-title">{{ .Site.Params.ideal_home.title }}</h2>
@@ -72,7 +77,7 @@
     </div>
 </section>
 
-<section class="gallery section-light">
+<section id="gallery" class="gallery section-light">
     <div class="container">
          <h2 class="section-title text-center">{{ .Site.Params.gallery.title }}</h2>
          <p class="text-center margin-bottom-lg">
@@ -80,9 +85,15 @@
          </p>
          <div class="masonry-grid">
             {{ range .Site.Params.gallery.images }}
-            <img src="{{ . | relURL }}" alt="Gallery Image" class="gallery-img" loading="lazy">
+            <img src="{{ . | relURL }}" alt="Gallery Image" class="gallery-img" loading="lazy" decoding="async">
             {{ end }}
          </div>
     </div>
 </section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+    <span class="close-lightbox" id="close-lightbox">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" src="" alt="Full size gallery image">
+</div>
 {{ end }}
