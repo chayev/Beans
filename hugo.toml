@@ -63,11 +63,10 @@ theme = 'beans-theme'
     title = "Media Gallery"
     flipbook_url = "https://heyzine.com/flip-book/577d2b53f4.html"
     images = [
-      "images/IMG_3782.jpg",
-      "images/IMG_3925.jpeg",
-      "images/IMG_4197.jpg",
       "images/IMG_4333.jpg",
       "images/IMG_4337.jpg",
+      "images/IMG_3925.jpeg",
+      "images/IMG_4197.jpg",
       "images/IMG_4461.jpg",
       "images/IMG_4532.jpeg",
       "images/IMG_4540.jpg",
@@ -85,7 +84,8 @@ theme = 'beans-theme'
       "images/IMG_5326.jpeg",
       "images/IMG_5345.jpeg",
       "images/IMG_5580.jpeg",
-      "images/IMG_5587.jpeg"
+      "images/IMG_5587.jpeg",
+      "images/IMG_3782.jpg"
     ]
 
 [markup.goldmark.renderer]
